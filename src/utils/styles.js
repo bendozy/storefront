@@ -24,20 +24,7 @@ export const colors = {
   lilac: `#8c65b3`,
   accent: `#ffb238`,
   error: `#ec1818`,
-  lemon: `#ffdf37`
-};
-
-export const badgeThemes = {
-  BUILDWITHGATSBY: {
-    level: 1,
-    backgroundTheme: colors.brand,
-    textTheme: colors.lemon
-  },
-  HOLYBUCKETS: {
-    level: 2,
-    backgroundTheme: colors.lemon,
-    textTheme: colors.brandDark
-  }
+  lemon: `#ffdf37`,
 };
 
 export const spacing = {
@@ -49,7 +36,7 @@ export const spacing = {
   lg: 24,
   xl: 32,
   '2xl': 40,
-  '3xl': 48
+  '3xl': 48,
 };
 
 export const breakpoints = {
@@ -57,12 +44,12 @@ export const breakpoints = {
   phablet: 550,
   tablet: 750,
   desktop: 1000,
-  hd: 1300
+  hd: 1300,
 };
 
 export const radius = {
   default: 2,
-  large: 4
+  large: 4,
 };
 
 export const defaultFontStack = [
@@ -75,7 +62,7 @@ export const defaultFontStack = [
   'Cantarell',
   'Open Sans',
   'Helvetica Neue',
-  'sans-serif'
+  'sans-serif',
 ].join();
 
 const monospaceFontStack = [
@@ -86,13 +73,13 @@ const monospaceFontStack = [
   `Consolas`,
   `Liberation Mono`,
   `Courier New`,
-  `monospace`
+  `monospace`,
 ].join();
 
 export const fonts = {
   body: defaultFontStack,
   heading: `Futura PT, ${defaultFontStack}`,
-  monospace: monospaceFontStack
+  monospace: monospaceFontStack,
 };
 
 export const dimensions = {
@@ -101,13 +88,13 @@ export const dimensions = {
   contributorAreaWidth: {
     closedDesktop: '60px',
     openDesktop: '340px',
-    openHd: '420px'
+    openHd: '420px',
   },
   contributorAreaBarHeight: '50px',
   pictureBrowserAction: {
     widthDesktop: '200px',
-    heightMobile: '80px'
-  }
+    heightMobile: '80px',
+  },
 };
 
 export const scrollbarStyles = {
@@ -115,7 +102,7 @@ export const scrollbarStyles = {
   '&::-webkit-scrollbar': { width: `6px`, height: `6px` },
   '&::-webkit-scrollbar-thumb': { background: colors.brandBright },
   '&::-webkit-scrollbar-thumb:hover': { background: colors.lilac },
-  '&::-webkit-scrollbar-track': { background: colors.brandLight }
+  '&::-webkit-scrollbar-track': { background: colors.brandLight },
 };
 
 const simpleEntry = keyframes`
@@ -133,5 +120,5 @@ const deadSimpleEntry = keyframes`
 
 export const animations = {
   simpleEntry: `${simpleEntry} .75s ease forwards`,
-  deadSimpleEntry: `${deadSimpleEntry} .5s ease forwards`
+  deadSimpleEntry: `${deadSimpleEntry} .5s ease forwards`,
 };
