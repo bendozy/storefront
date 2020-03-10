@@ -1,0 +1,14 @@
+@import 'tailwindcss/base';
+
+@import 'tailwindcss/components';
+
+@import 'tailwindcss/utilities';
+
+body {
+  color: hsla(0, 0%, 0%, 0.8);
+
+  &.dark {
+    background-color: black;
+    color: white;
+  }
+}

@@ -1,7 +1,7 @@
-/**
- * Implement Gatsby's Browser APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/browser-apis/
- */
+import * as React from 'react'
 
-// You can delete this file if you're not using it
+import { MediaContextProvider } from './src/utils/media'
+
+export const wrapRootElement = ({ element }) => (
+  <MediaContextProvider>{element}</MediaContextProvider>
+)

@@ -1,6 +1,6 @@
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
-});
+})
 
 module.exports = {
   siteMetadata: {
@@ -21,7 +21,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-layout`,
       options: {
-        component: require.resolve(`./src/components/layouts`),
+        component: require.resolve(`./src/components/layouts/index.tsx`),
       },
     },
     `gatsby-plugin-react-helmet`,
@@ -79,4 +79,4 @@ module.exports = {
       },
     },
   ],
-};
+}

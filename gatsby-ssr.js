@@ -1,7 +1,7 @@
-/**
- * Implement Gatsby's SSR (Server Side Rendering) APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/ssr-apis/
- */
+import * as React from 'react'
 
-// You can delete this file if you're not using it
+import { MediaContextProvider } from './src/utils/media'
+
+export const wrapRootElement = ({ element }) => (
+  <MediaContextProvider>{element}</MediaContextProvider>
+)

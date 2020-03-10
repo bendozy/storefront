@@ -1,9 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
+import useDarkMode from 'use-dark-mode'
+import classNames from 'classnames'
 
 import Header from './Header'
-import './index.css'
+import './index.scss'
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -15,9 +17,12 @@ const Layout = ({ children }) => {
       }
     }
   `)
-  
+
+  const darkMode = useDarkMode(false)
+  const theme = `theme_${darkMode.value ? `dark` : `light`}`
+
   return (
-    <>
+    <div className={classNames(['layout', theme])}>
       <Header siteTitle={data.site.siteMetadata.title} />
       <div
         style={{
@@ -33,7 +38,7 @@ const Layout = ({ children }) => {
           <a href="https://www.gatsbyjs.org">Gatsby</a>
         </footer>
       </div>
-    </>
+    </div>
   )
 }
 
