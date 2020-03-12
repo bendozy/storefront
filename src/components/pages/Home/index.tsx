@@ -3,13 +3,13 @@ import { Link } from 'gatsby'
 
 import Image from 'components/utils/image'
 import SEO from 'components/utils/seo'
+import HomeBanner from 'components/pages/Home/HomeBanner'
 
 const Home = ({ pageContext: { banners, categories } }) => {
-  console.log(banners)
-
   return (
     <>
       <SEO title="Home" />
+      <HomeBanner {...banners[0]} />
       <div className="md:flex">
         <div className="md:flex-shrink-0">
           <img
