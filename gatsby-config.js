@@ -1,3 +1,5 @@
+const path = require('path')
+
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 })
@@ -55,7 +57,6 @@ module.exports = {
         repositoryName: `${process.env.PRISMIC_REPOSITORY_NAME}`,
         accessToken: `${process.env.PRISMIC_API_KEY}`,
         linkResolver: ({ node, key, value }) => post => `/${post.uid}`,
-        shouldNormalizeImage: true,
       },
     },
     {
@@ -76,6 +77,15 @@ module.exports = {
           require('tailwindcss'),
           require('./tailwind.config.js'),
         ],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-alias-imports`,
+      options: {
+        alias: {
+          components: path.resolve(__dirname, 'src/components'),
+        },
+        extensions: [],
       },
     },
   ],
