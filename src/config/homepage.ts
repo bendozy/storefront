@@ -1,60 +1,71 @@
 const path = require('path')
 
 module.exports = async (graphql, createPage) => {
-  const language = process.env.language || 'en'
+  const language = process.env.CONTENTFUL_LOCALE || 'en-US'
+  const homePageTitle = process.env.CONTENTFUL_HOMEPAGE_TITLE
 
   const query = await graphql(`
     {
-      allPrismicHomepage(filter: { data: { language: { eq: "${language}" } } }) {
-        nodes {
-          data {
-            title
-            banners {
-              banner_description
-              cta
-              cta_link
-              weight
-              banner_image {
-                url
-                name
+      contentfulHomePage(
+        title: { eq: "${homePageTitle}" }
+        node_locale: { eq: "${language}" }
+      ) {
+        id
+        title
+        primaryHomeBanner {
+          title
+          ctaLink
+          cta
+          description {
+            description
+          }
+          image {
+            localFile {
+              absolutePath
+              publicURL
+              childImageSharp {
+                fluid(cropFocus: EAST, fit: COVER, quality: 100, maxHeight: 500) {
+                  src
+                  srcSet
+                  aspectRatio
+                  sizes
+                  base64
+                }
               }
             }
-            featured_products {
-              product_sku
-            }
-            best_sellers {
-              product_sku
-            }
-            categories {
-              category_title
-              weight
-              category_image {
-                url
-                name
+          }
+          mobileImage {
+            localFile {
+              absolutePath
+              publicURL
+              childImageSharp {
+                fluid(maxHeight: 150) {
+                  src
+                  srcSet
+                  aspectRatio
+                }
               }
             }
           }
         }
+        bestSellingProducts
       }
     }
   `)
 
   const {
     title,
-    banners,
-    categories,
-    ...homePage
-  } = query.data.allPrismicHomepage.nodes[0].data
+    primaryHomeBanner,
+    bestSellingProducts,
+  } = query.data.contentfulHomePage
 
   createPage({
     path: '/',
     component: path.resolve('./src/components/pages/Home/index.tsx'),
     context: {
       title,
-      banners: banners.sort((a, b) => a.weight - b.weight),
-      categories: categories.sort((a, b) => a.weight - b.weight),
+      primaryHomeBanner,
+      bestSellingProducts,
     },
   })
-
-  console.log('query', JSON.stringify(homePage, null, 2))
 }

@@ -7,7 +7,7 @@ import classNames from 'classnames'
 import Header from './Header'
 import './index.scss'
 
-const Layout = ({ children }) => {
+const Layout = ({ children, uri, ...props }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -18,8 +18,10 @@ const Layout = ({ children }) => {
     }
   `)
 
+  console.log(children, uri)
+
   const darkMode = useDarkMode(false)
-  const theme = `theme_${darkMode.value ? `dark` : `light`}`
+  const theme = `theme-${darkMode.value ? `dark` : `light`}`
 
   return (
     <div className={classNames(['layout', theme])}>
@@ -27,8 +29,7 @@ const Layout = ({ children }) => {
       <div
         style={{
           margin: `0 auto`,
-          maxWidth: 1176,
-          padding: `0 1.0875rem 1.45rem`,
+          maxWidth: uri !== '/' ? `1176px` : undefined,
         }}
       >
         <main>{children}</main>

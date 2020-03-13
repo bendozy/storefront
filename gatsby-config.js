@@ -20,13 +20,20 @@ module.exports = {
     },
   },
   plugins: [
+    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-typescript`,
+    `gatsby-plugin-offline`,
+    `gatsby-plugin-emotion`,
+    `gatsby-plugin-catch-links`,
+    `gatsby-plugin-postcss`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-layout`,
       options: {
         component: require.resolve(`./src/components/layouts/index.tsx`),
       },
     },
-    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -34,8 +41,6 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -48,17 +53,6 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
-    `gatsby-plugin-typescript`,
-    `gatsby-plugin-offline`,
-    `gatsby-plugin-emotion`,
-    {
-      resolve: `gatsby-source-prismic`,
-      options: {
-        repositoryName: `${process.env.PRISMIC_REPOSITORY_NAME}`,
-        accessToken: `${process.env.PRISMIC_API_KEY}`,
-        linkResolver: ({ node, key, value }) => post => `/${post.uid}`,
-      },
-    },
     {
       resolve: 'gatsby-plugin-use-dark-mode',
       options: {
@@ -68,8 +62,6 @@ module.exports = {
         minify: true,
       },
     },
-    `gatsby-plugin-catch-links`,
-    `gatsby-plugin-postcss`,
     {
       resolve: `gatsby-plugin-sass`,
       options: {
@@ -84,8 +76,24 @@ module.exports = {
       options: {
         alias: {
           components: path.resolve(__dirname, 'src/components'),
+          helpers: path.resolve(__dirname, 'src/helpers'),
         },
-        extensions: [],
+      },
+    },
+
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+        downloadLocal: true,
+      },
+    },
+    {
+      resolve: `gatsby-background-image`,
+      options: {
+        // add your own characters to escape, replacing the default ':/'
+        specialChars: '/:',
       },
     },
   ],

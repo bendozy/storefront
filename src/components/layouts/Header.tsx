@@ -28,38 +28,38 @@ const Header = ({ siteTitle }) => {
     <header
       style={{
         background: `#ff6900`,
-        marginBottom: `1.45rem`,
       }}
     >
       <div
         style={{
           margin: `0 auto`,
           maxWidth: 1176,
-          padding: `1.45rem 1.0875rem`,
         }}
       >
-        <h1 style={{ margin: 0 }}>
-          <Link
-            to="/"
-            style={{
-              color: `white`,
-              textDecoration: `none`,
-            }}
-          >
-            {siteTitle}
-          </Link>
-        </h1>
-        <div className="dark-mode-toggle">
-          <button
-            className="text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
-            onClick={darkMode.toggle}
-          >
-            {darkMode.value ? (
-              <FiSun color="white" />
-            ) : (
-              <FiMoon color="black" />
-            )}
-          </button>
+        <div className="mx-5 md:mx-0">
+          <h1 style={{ margin: 0 }}>
+            <Link
+              to="/"
+              style={{
+                color: `white`,
+                textDecoration: `none`,
+              }}
+            >
+              {siteTitle}
+            </Link>
+          </h1>
+          <div className="dark-mode-toggle">
+            <button
+              className="text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
+              onClick={darkMode.toggle}
+            >
+              {darkMode.value ? (
+                <FiSun color="white" />
+              ) : (
+                <FiMoon color="black" />
+              )}
+            </button>
+          </div>
         </div>
       </div>
     </header>

@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { mediaStyles } from './utils/media'
+import { mediaStyles } from 'helpers/media'
 
 export default function HTML(props) {
   return (

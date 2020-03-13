@@ -14,7 +14,8 @@
     "paths": {
       "components": ["components"],
       "config": ["config"],
-      "context": ["context"]
+      "context": ["context"],
+      "helpers": ["helpers"]
     }
   },
   "exclude": ["node_modules", "public", ".cache"]

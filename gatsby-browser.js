@@ -1,6 +1,12 @@
 import * as React from 'react'
+import { MediaContextProvider } from 'helpers/media'
 
-import { MediaContextProvider } from './src/utils/media'
+export const onClientEntry = () => {
+  // IntersectionObserver polyfill for gatsby-background-image (Safari, IE)
+  if (!(`IntersectionObserver` in window)) {
+    import(`intersection-observer`)
+  }
+}
 
 export const wrapRootElement = ({ element }) => (
   <MediaContextProvider>{element}</MediaContextProvider>

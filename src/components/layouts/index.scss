@@ -4,11 +4,23 @@
 
 @import 'tailwindcss/utilities';
 
+.theme-light {
+  --color-bg-primary: #fff;
+  --color-bg-secondary: #f7fafc;
+  --color-bg-ternary: #e2e8f0;
+}
+
+.theme-dark {
+  --color-bg-primary: #0d2438;
+  --color-bg-secondary: #102c44;
+  --color-bg-ternary: #1e3951;
+}
+
 body {
   color: hsla(0, 0%, 0%, 0.8);
 
   &.dark {
-    background-color: black;
+    background-color: #0d2438;
     color: white;
   }
 }
