@@ -1,6 +1,6 @@
 const allProductsQuery = `
 query products {
-  products(search: "", pageSize: 10){
+  products(search: "", pageSize: 1000){
     aggregations {
       attribute_code
       count

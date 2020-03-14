@@ -7,13 +7,14 @@ import HomeBanner, { HomeBannerProps } from 'components/pages/Home/HomeBanner'
 export type HomeProps = {
   pageContext: {
     primaryHomeBanner: HomeBannerProps
-    bestSellingProducts: [string]
   }
 }
 
 const Home = ({
-  pageContext: { primaryHomeBanner, bestSellingProducts },
+  pageContext: { primaryHomeBanner, productList },
 }: HomeProps) => {
+  console.log('productList', productList)
+
   return (
     <>
       <SEO title="Home" />

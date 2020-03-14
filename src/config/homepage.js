@@ -29,7 +29,8 @@ export default async (graphql, createPage) => {
                   srcSet
                   aspectRatio
                   sizes
-                  base64
+                  presentationWidth
+                  presentationHeight
                 }
               }
             }
@@ -43,6 +44,10 @@ export default async (graphql, createPage) => {
                   src
                   srcSet
                   aspectRatio
+                  sizes
+                  base64
+                  presentationWidth
+                  presentationHeight
                 }
               }
             }
@@ -59,6 +64,77 @@ export default async (graphql, createPage) => {
     bestSellingProducts,
   } = query.data.contentfulHomePage
 
+  const productsQuery = await graphql(`
+    {
+      allMagentoProduct(filter: { sku: { in: ${JSON.stringify(
+        bestSellingProducts,
+      )} } }) {
+        productList: edges {
+          node {
+            id
+            name
+            sku
+            attribute_set_id
+            url_key
+            description {
+              html
+            }
+            categories {
+              id
+              name
+            }
+            image {
+              label
+              url {
+                childImageSharp {
+                  fluid {
+                    srcSet
+                    src
+                    aspectRatio
+                  }
+                }
+              }
+            }
+            thumbnail {
+              label
+              url {
+                childImageSharp {
+                  fluid {
+                    srcSet
+                    src
+                    aspectRatio
+                  }
+                }
+              }
+            }
+            meta_description
+            related_products {
+              id
+            }
+            media_gallery {
+              label
+              url {
+                childImageSharp {
+                  fluid {
+                    src
+                    srcSet
+                    aspectRatio
+                  }
+                }
+              }
+            }
+            options_container
+            new
+            performance_fabric
+          }
+        }
+      }
+    }
+  `)
+
+  const { productList } = productsQuery.data.allMagentoProduct
+  console.log('productList', productsQuery.data.allMagentoProduct.edges)
+
   createPage({
     path: '/',
     component: path.resolve('./src/components/pages/Home/index.tsx'),
@@ -66,6 +142,7 @@ export default async (graphql, createPage) => {
       title,
       primaryHomeBanner,
       bestSellingProducts,
+      productList,
     },
   })
 }
