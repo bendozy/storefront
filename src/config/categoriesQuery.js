@@ -14,4 +14,4 @@ const categoryQuery = `
     }
 `
 
-module.exports = categoryQuery
+export default categoryQuery

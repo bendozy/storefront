@@ -1,6 +1,6 @@
-const path = require('path')
+import path from 'path'
 
-module.exports = async (graphql, createPage) => {
+export default async (graphql, createPage) => {
   const language = process.env.CONTENTFUL_LOCALE || 'en-US'
   const homePageTitle = process.env.CONTENTFUL_HOMEPAGE_TITLE
 

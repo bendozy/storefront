@@ -56,4 +56,4 @@ const storeConfig = `
   }
 `
 
-module.exports = storeConfig
+export default storeConfig

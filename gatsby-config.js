@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/camelcase */
 const path = require('path')
 
 require('dotenv').config({

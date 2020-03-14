@@ -1,7 +1,9 @@
-const createStoreNode = require('../helpers/storeConfig.ts')
-const createProductNodes = require('../helpers/products.ts')
+import createStoreNode from './storeConfig'
+import createProductNodes from './products'
 
-module.exports = async params => {
+// type Config
+
+export default async params => {
   const productMap = {}
 
   const indexMap = {

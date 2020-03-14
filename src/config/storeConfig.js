@@ -1,12 +1,13 @@
-const graphqlRequest = require('graphql-request')
-const crypto = require('crypto')
-const storeConfigQuery = require('../queries/storeConfig.ts')
+import { GraphQLClient } from 'graphql-request'
+import crypto from 'crypto'
+import storeConfigQuery from './storeConfigQuery'
 
 const graphqlEndpoint = process.env.MAGENTO_API || ''
 
-module.exports = ({ createNode, createNodeId, reporter }) => {
-  return new Promise(async (resolve, reject) => {
-    const client = new graphqlRequest.GraphQLClient(graphqlEndpoint, {})
+export default ({ createNode, createNodeId, reporter }) => {
+  // eslint-disable-next-line no-async-promise-executor
+  return new Promise(async resolve => {
+    const client = new GraphQLClient(graphqlEndpoint, {})
 
     try {
       const config = await client.request(storeConfigQuery)
@@ -14,7 +15,7 @@ module.exports = ({ createNode, createNodeId, reporter }) => {
       createNode({
         ...config.storeConfig,
         id: createNodeId(`${config.id}`),
-        magento_id: config.id,
+        magentoId: config.id,
         parent: `__STORE__`,
         children: [],
         internal: {

@@ -73,4 +73,4 @@ query products {
   }
 }
 `
-module.exports = allProductsQuery
+export default allProductsQuery
