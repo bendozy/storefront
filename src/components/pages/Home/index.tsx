@@ -1,8 +1,7 @@
 import React from 'react'
-import { Link } from 'gatsby'
 
-import Image from 'components/utils/image'
 import SEO from 'components/utils/seo'
+import ProductsSlider from 'components/products/ProductsSlider'
 import HomeBanner, { HomeBannerProps } from 'components/pages/Home/HomeBanner'
 
 export type HomeProps = {
@@ -19,6 +18,7 @@ const Home = ({
     <>
       <SEO title="Home" />
       <HomeBanner {...primaryHomeBanner} />
+      <ProductsSlider />
       <HomeBanner {...primaryHomeBanner} />
       <HomeBanner {...primaryHomeBanner} />
     </>

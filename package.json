@@ -15,6 +15,7 @@
     "axios": "^0.19.2",
     "classnames": "^2.2.6",
     "emotion-theming": "^10.0.27",
+    "esm": "^3.2.25",
     "facepaint": "^1.2.1",
     "formik": "^2.1.4",
     "gatsby": "^2.19.7",
@@ -34,9 +35,9 @@
     "gatsby-plugin-use-dark-mode": "^1.1.2",
     "gatsby-source-contentful": "^2.1.95",
     "gatsby-source-filesystem": "^2.1.46",
-    "gatsby-source-prismic-graphql": "^3.5.0",
     "gatsby-transformer-sharp": "^2.3.13",
     "graphql": "^14.6.0",
+    "graphql-request": "^1.8.2",
     "intersection-observer": "^0.7.0",
     "node-sass": "^4.13.1",
     "prop-types": "^15.7.2",
@@ -52,6 +53,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
+    "@babel/plugin-transform-typescript": "^7.8.7",
+    "@babel/preset-typescript": "^7.8.3",
     "@storybook/addon-a11y": "^5.3.12",
     "@storybook/addon-actions": "^5.3.12",
     "@storybook/addon-backgrounds": "^5.3.12",
@@ -72,6 +75,7 @@
     "@typescript-eslint/eslint-plugin": "^2.21.0",
     "@typescript-eslint/parser": "^2.21.0",
     "babel-loader": "^8.0.6",
+    "babel-preset-gatsby": "^0.2.35",
     "cypress": "^4.1.0",
     "dotenv": "^8.2.0",
     "eslint": "^6.8.0",
@@ -86,7 +90,8 @@
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-order": "^4.0.0",
     "stylelint-processor-styled-components": "^1.10.0",
-    "tailwindcss": "^1.2.0"
+    "tailwindcss": "^1.2.0",
+    "typescript": "^3.8.3"
   },
   "keywords": [
     "gatsby"
@@ -113,11 +118,7 @@
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "tsc --noEmit && lint-staged"
-    }
-  },
+  
   "lint-staged": {
     "*.{js,ts,tsx}": [
       "eslint --fix",

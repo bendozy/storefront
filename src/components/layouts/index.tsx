@@ -18,8 +18,6 @@ const Layout = ({ children, uri, ...props }) => {
     }
   `)
 
-  console.log(children, uri)
-
   const darkMode = useDarkMode(false)
   const theme = `theme-${darkMode.value ? `dark` : `light`}`
 

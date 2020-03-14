@@ -77,6 +77,7 @@ module.exports = {
         alias: {
           components: path.resolve(__dirname, 'src/components'),
           helpers: path.resolve(__dirname, 'src/helpers'),
+          queries: path.resolve(__dirname, 'src/queries'),
         },
       },
     },
@@ -92,7 +93,6 @@ module.exports = {
     {
       resolve: `gatsby-background-image`,
       options: {
-        // add your own characters to escape, replacing the default ':/'
         specialChars: '/:',
       },
     },
