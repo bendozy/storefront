@@ -1,4 +1,5 @@
 import * as React from 'react'
+import objectFitImages from 'object-fit-images'
 import { MediaContextProvider } from 'helpers/media'
 
 export const onClientEntry = () => {
@@ -11,3 +12,7 @@ export const onClientEntry = () => {
 export const wrapRootElement = ({ element }) => (
   <MediaContextProvider>{element}</MediaContextProvider>
 )
+
+export const onInitialClientRender = () => {
+  objectFitImages()
+}

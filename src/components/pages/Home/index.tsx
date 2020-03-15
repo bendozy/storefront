@@ -21,6 +21,7 @@ const Home = ({
       <HomeBanner {...primaryHomeBanner} />
       <ProductsSlider />
       <HomeBanner {...primaryHomeBanner} />
+      <ProductsSlider />
       <HomeBanner {...primaryHomeBanner} />
     </>
   )

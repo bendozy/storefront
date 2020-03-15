@@ -24,13 +24,12 @@ export default async (graphql, createPage) => {
               absolutePath
               publicURL
               childImageSharp {
-                fluid(cropFocus: EAST, fit: COVER, quality: 100, maxHeight: 500) {
+                sizes(maxWidth: 2048, maxHeight: 500) {
+                  base64
+                  aspectRatio
                   src
                   srcSet
-                  aspectRatio
                   sizes
-                  presentationWidth
-                  presentationHeight
                 }
               }
             }
@@ -40,14 +39,12 @@ export default async (graphql, createPage) => {
               absolutePath
               publicURL
               childImageSharp {
-                fluid(maxHeight: 150) {
+                sizes(maxWidth: 770, maxHeight: 420) {
+                  base64
+                  aspectRatio
                   src
                   srcSet
-                  aspectRatio
                   sizes
-                  base64
-                  presentationWidth
-                  presentationHeight
                 }
               }
             }
