@@ -4,20 +4,11 @@ import React from 'react'
 import useDarkMode from 'use-dark-mode'
 import { FiSun, FiMoon } from 'react-icons/fi'
 
-const Toggle = ({ checked, onChange }) => (
-  <span className="toggle-control">
-    <input
-      className="dmcheck"
-      type="checkbox"
-      checked={checked}
-      onChange={onChange}
-      id="dmcheck"
-    />
-    <label htmlFor="dmcheck" />
-  </span>
-)
+type HeaderProps = {
+  siteTitle: string
+}
 
-const Header = ({ siteTitle }) => {
+const Header = ({ siteTitle }: HeaderProps) => {
   const darkMode = useDarkMode(false, {
     classNameDark: 'dark',
     classNameLight: 'light',

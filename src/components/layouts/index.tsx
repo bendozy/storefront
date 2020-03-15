@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
 import useDarkMode from 'use-dark-mode'
@@ -7,7 +7,12 @@ import classNames from 'classnames'
 import Header from './Header'
 import './index.scss'
 
-const Layout = ({ children, uri, ...props }) => {
+type Props = {
+  uri: string
+  children: ReactNode
+}
+
+const Layout = ({ children, uri }: Props) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {

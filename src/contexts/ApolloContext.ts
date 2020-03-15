@@ -1,8 +1,8 @@
-import ApolloClient from 'apollo-boost';
+import ApolloClient from 'apollo-boost'
 
-const token = localStorage.getItem('token');
+const token = localStorage.getItem('token')
 
-export const isBrowser = typeof window !== 'undefined';
+export const isBrowser = typeof window !== 'undefined'
 
 export const client = isBrowser
   ? new ApolloClient({
@@ -12,7 +12,7 @@ export const client = isBrowser
           headers: {
             authorization: `Bearer ${token}`,
           },
-        });
+        })
       },
     })
-  : {};
+  : {}

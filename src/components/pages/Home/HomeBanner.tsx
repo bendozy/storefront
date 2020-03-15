@@ -1,13 +1,23 @@
 import React from 'react'
-import Img, { FluidObject } from 'gatsby-image'
+import Img from 'gatsby-image'
 import BackgroundImage from 'gatsby-background-image'
 import { Link } from 'gatsby'
 import { maxWidth } from 'helpers/media'
 
-type FluidImage = {
+type SizedImage = {
   localFile: {
     childImageSharp: {
-      fluid: FluidObject
+      sizes: {
+        aspectRatio: number
+        src: string
+        srcSet: string
+        sizes: string
+        base64?: string
+        tracedSVG?: string
+        srcWebp?: string
+        srcSetWebp?: string
+        media?: string
+      }
     }
   }
 }
@@ -19,8 +29,8 @@ export type HomeBannerProps = {
   }
   cta: string
   ctaLink: string
-  image: FluidImage
-  mobileImage: FluidImage
+  image: SizedImage
+  mobileImage: SizedImage
 }
 
 const HomeBanner = ({

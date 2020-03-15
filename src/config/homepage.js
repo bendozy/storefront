@@ -50,7 +50,10 @@ export default async (graphql, createPage) => {
             }
           }
         }
-        bestSellingProducts
+        bestSellingProducts {
+          title
+          skus
+        }
       }
     }
   `)
@@ -64,65 +67,35 @@ export default async (graphql, createPage) => {
   const productsQuery = await graphql(`
     {
       allMagentoProduct(filter: { sku: { in: ${JSON.stringify(
-        bestSellingProducts,
+        bestSellingProducts.skus,
       )} } }) {
         productList: edges {
           node {
             id
             name
             sku
-            attribute_set_id
             url_key
             description {
               html
             }
-            categories {
-              id
-              name
-            }
+            metaDescription: meta_description
             image {
               label
               url {
                 childImageSharp {
-                  fluid {
-                    srcSet
-                    src
+                  fluid(maxWidth: 910, maxHeight: 910) {
+                    tracedSVG
                     aspectRatio
+                    src
+                    srcSet
+                    srcWebp
+                    srcSetWebp
+                    sizes
                   }
                 }
               }
             }
-            thumbnail {
-              label
-              url {
-                childImageSharp {
-                  fluid {
-                    srcSet
-                    src
-                    aspectRatio
-                  }
-                }
-              }
-            }
-            meta_description
-            related_products {
-              id
-            }
-            media_gallery {
-              label
-              url {
-                childImageSharp {
-                  fluid {
-                    src
-                    srcSet
-                    aspectRatio
-                  }
-                }
-              }
-            }
-            options_container
             new
-            performance_fabric
           }
         }
       }
@@ -130,7 +103,10 @@ export default async (graphql, createPage) => {
   `)
 
   const { productList } = productsQuery.data.allMagentoProduct
-  console.log('productList', productsQuery.data.allMagentoProduct.edges)
+
+  delete bestSellingProducts.skus
+
+  bestSellingProducts.products = productList.map(p => p.node)
 
   createPage({
     path: '/',
@@ -139,7 +115,6 @@ export default async (graphql, createPage) => {
       title,
       primaryHomeBanner,
       bestSellingProducts,
-      productList,
     },
   })
 }

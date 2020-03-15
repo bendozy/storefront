@@ -1,38 +1,57 @@
 import React from 'react'
+import Image, { FluidObject } from 'gatsby-image'
 import classNames from 'classnames'
+import { Link } from 'gatsby'
 
-type Props = {
-  first?: boolean
-  last?: boolean
+export type ProductPreview = {
+  id: string
+  name: string
+  metaDescription?: string
+  image: {
+    label?: string
+    url: {
+      childImageSharp: { fluid: FluidObject }
+    }
+  }
 }
 
-const ProductCard = ({ first, last }: Props) => (
-  <div
-    className={classNames(
-      'max-w-sm rounded overflow-hidden shadow-lg border-black',
-      { 'ml-5': !first },
-    )}
-  >
-    <div className="px-6 py-4">
-      <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
-      <p className="text-gray-700 text-base">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus
-        quia, nulla! Maiores et perferendis eaque, exercitationem praesentium
-        nihil.
-      </p>
+export type ProductCardProps = {
+  firstItem?: boolean
+  lastItem?: boolean
+  product: ProductPreview
+}
+
+const ProductCard = ({
+  product: {
+    id,
+    name,
+    image: {
+      url: {
+        childImageSharp: { fluid },
+      },
+    },
+  },
+  firstItem,
+  lastItem,
+}: ProductCardProps) => {
+  console.log('assaa', id)
+
+  return (
+    <div
+      className={classNames('max-w-sm rounded border', {
+        'ml-2': !firstItem,
+        'mr-2': !lastItem,
+      })}
+    >
+      <Link to="/">
+        <Image fluid={fluid} imgStyle={{ objectFit: 'contain' }} />
+        <div className="px-6 py-4 h-auto overflow-hidden">
+          <div className="font-bold text-xl mb-2">$10</div>
+          <div className="">{name}</div>
+        </div>
+      </Link>
     </div>
-    <div className="px-6 py-4">
-      <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
-        #photography
-      </span>
-      <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
-        #travel
-      </span>
-      <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">
-        #winter
-      </span>
-    </div>
-  </div>
-)
+  )
+}
 
 export default ProductCard

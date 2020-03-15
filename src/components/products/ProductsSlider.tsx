@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import Carousel from 'nuka-carousel'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
-import Card from './ProductCard'
-import { maxWidth, breakpoints } from 'helpers/media'
+import ProductCard, { ProductPreview } from 'components/products/ProductCard'
+import { breakpoints, maxWidth } from 'helpers/media'
 
 const isClient = typeof window !== 'undefined'
 
 const getNumberOfSlides = (width: number) => {
+  // if (width >= breakpoints.xl) {
+  //   return 5
+  // }
   if (width >= breakpoints.lg) {
     return 4
   }
@@ -22,8 +25,13 @@ const getNumberOfSlides = (width: number) => {
   return 1
 }
 
-const ProductsSlider = () => {
-  const [slidesToShow, setSlidesToShow] = useState(4)
+export type ProductsSliderProps = {
+  title: string
+  products: [ProductPreview]
+}
+
+const ProductsSlider = ({ title, products }: ProductsSliderProps) => {
+  const [slidesToShow, setSlidesToShow] = useState(1)
 
   useEffect(() => {
     if (isClient) {
@@ -39,30 +47,35 @@ const ProductsSlider = () => {
   })
 
   return (
-    <div style={{ maxWidth, margin: '0 auto' }} className="py-5 px-5 xl:px-0">
-      <div>Featured Products</div>
+    <div style={{ maxWidth }} className="mx-auto py-5 mx-5 px-5 xl:px-0">
+      <div>{title}</div>
       <Carousel
         renderCenterLeftControls={({ previousSlide }) => (
           <button onClick={previousSlide}>
-            <FaChevronLeft size="2em" />
+            <div className="bg-secondary py-5">
+              <FaChevronLeft size="2em" />
+            </div>
           </button>
         )}
         renderCenterRightControls={({ nextSlide }) => (
           <button onClick={nextSlide}>
-            <FaChevronRight size="2em" />
+            <div className="bg-secondary py-5">
+              <FaChevronRight size="2em" />
+            </div>
           </button>
         )}
         renderBottomCenterControls={null}
         slidesToShow={slidesToShow}
         swiping
       >
-        <Card first={true} />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card last={true} />
+        {products.map((product, index) => (
+          <ProductCard
+            key={`_${product.id}-${index}`}
+            product={product}
+            firstItem={index === 0}
+            lastItem={index === products.length - 1}
+          />
+        ))}
       </Carousel>
     </div>
   )

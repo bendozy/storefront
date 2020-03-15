@@ -1,28 +1,29 @@
 import React from 'react'
-
 import SEO from 'components/utils/seo'
-import ProductsSlider from 'components/products/ProductsSlider'
+import ProductsSlider, {
+  ProductsSliderProps,
+} from 'components/products/ProductsSlider'
 import HomeBanner, { HomeBannerProps } from 'components/pages/Home/HomeBanner'
 
 export type HomeProps = {
   pageContext: {
     primaryHomeBanner: HomeBannerProps
+    bestSellingProducts: ProductsSliderProps
   }
 }
 
 const Home = ({
-  pageContext: { primaryHomeBanner, productList },
+  pageContext: { primaryHomeBanner, bestSellingProducts },
 }: HomeProps) => {
-  console.log('productList', productList)
-
   return (
     <>
       <SEO title="Home" />
       <HomeBanner {...primaryHomeBanner} />
-      <ProductsSlider />
+      <ProductsSlider {...bestSellingProducts} />
       <HomeBanner {...primaryHomeBanner} />
-      <ProductsSlider />
+      <ProductsSlider {...bestSellingProducts} />
       <HomeBanner {...primaryHomeBanner} />
+      <ProductsSlider {...bestSellingProducts} />
     </>
   )
 }
