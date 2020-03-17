@@ -156,6 +156,7 @@ export default (
           indexMap['product'][key].push(nodeData.id)
         }
       } catch (e) {
+        console.log('errrr.', e)
         reject(e)
       }
     }
