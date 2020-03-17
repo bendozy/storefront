@@ -97,5 +97,14 @@ module.exports = {
         specialChars: '/:',
       },
     },
+    {
+      resolve: 'gatsby-plugin-web-font-loader',
+      options: {
+        custom: {
+          families: ['Futura PT'],
+          urls: ['/fonts/fonts.css'],
+        },
+      },
+    },
   ],
 }

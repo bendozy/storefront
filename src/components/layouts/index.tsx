@@ -5,6 +5,7 @@ import useDarkMode from 'use-dark-mode'
 import classNames from 'classnames'
 
 import Header from './Header'
+
 import './index.scss'
 
 type Props = {

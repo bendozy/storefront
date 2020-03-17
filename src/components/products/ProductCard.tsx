@@ -23,7 +23,6 @@ export type ProductCardProps = {
 
 const ProductCard = ({
   product: {
-    id,
     name,
     image: {
       url: {
@@ -34,11 +33,9 @@ const ProductCard = ({
   firstItem,
   lastItem,
 }: ProductCardProps) => {
-  console.log('assaa', id)
-
   return (
     <div
-      className={classNames('max-w-sm rounded border', {
+      className={classNames('max-w-sm border', {
         'ml-2': !firstItem,
         'mr-2': !lastItem,
       })}
@@ -46,8 +43,10 @@ const ProductCard = ({
       <Link to="/">
         <Image fluid={fluid} imgStyle={{ objectFit: 'contain' }} />
         <div className="px-6 py-4 h-auto overflow-hidden">
-          <div className="font-bold text-xl mb-2">$10</div>
-          <div className="">{name}</div>
+          <div className="font-bold text-xl mb-2 font-title text-orange-700">
+            $10
+          </div>
+          <div className="font-title">{name}</div>
         </div>
       </Link>
     </div>

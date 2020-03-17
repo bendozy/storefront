@@ -31,6 +31,7 @@
     "gatsby-plugin-styled-components": "^3.1.20",
     "gatsby-plugin-typescript": "^2.1.27",
     "gatsby-plugin-use-dark-mode": "^1.1.2",
+    "gatsby-plugin-web-font-loader": "^1.0.4",
     "gatsby-source-contentful": "^2.1.95",
     "gatsby-source-filesystem": "^2.1.46",
     "gatsby-transformer-sharp": "^2.3.13",

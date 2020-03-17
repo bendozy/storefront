@@ -48,7 +48,7 @@ const ProductsSlider = ({ title, products }: ProductsSliderProps) => {
 
   return (
     <div style={{ maxWidth }} className="mx-auto py-5 mx-5 px-5 xl:px-0">
-      <div>{title}</div>
+      <div className="font-title mb-5 text-2xl">{title}</div>
       <Carousel
         renderCenterLeftControls={({ previousSlide }) => (
           <button onClick={previousSlide}>
